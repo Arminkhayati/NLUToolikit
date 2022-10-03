@@ -1,0 +1,21 @@
+# data configs
+unk_token: O
+sos_token: <sos>  #start of sentence token
+eos_token: <eos> #end of sentence token
+pad_token: PAD
+
+# model configs
+seed: 123
+num_words: 250
+epochs: 5
+max_length: 45 #encouder/decoder maximum sequence length
+clip: 0.1 #gradient clipping
+dropout: 0.25
+embed_size: 300 #embedding size
+hidden_size: 300 #hidden size
+batch_size: 32 #batch size
+kernel_size: 3 #encoder/decoder CNN kernel size
+encoder_layers: 2 #number of layers of the encoder
+decoder_layers: 2 #number of layers of the decoder
+num_train_data: 10000 # 160000
+num_val_data: 5000 # 64000
