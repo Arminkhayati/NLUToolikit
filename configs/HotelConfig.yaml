@@ -1,0 +1,26 @@
+
+name: "RNN"
+
+
+task: "HotelReservationTask" # HotelReservationTask or BuyChargeTask
+seed: 11111
+data:
+
+  # if you are loading data from pickle files, their name must be
+  # train_data.pickle, validation_data.pickle and test_data.pickle if use_test_set is True
+  from: "pickle" # text or pickle
+  data_dir: "../data"
+  # data split ratio
+  split: 0.2
+  # if true, "2*split" percent of data is taken away for validation and test set and the rest is for train.
+  # else, "split" percent of data is taken away for validation and the rest is for train.
+  use_test_set: false
+
+
+labels: {}
+
+
+
+
+
+
