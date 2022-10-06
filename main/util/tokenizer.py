@@ -5,13 +5,13 @@ OOV_VALUE = 1
 
 
 class Tokenizer:
-    def __init__(self, num_words=200, max_seq_len=45, label=None, words=None ,sos_eos=False):
+    def __init__(self, num_words=200, max_seq_len=45, labels=None, words=None ,sos_eos=False):
         self.num_words = num_words
         self.max_seq_len = max_seq_len
         self.train = True
         self.sos_eos = sos_eos
-        if label:
-            self.word_to_index = label
+        if labels:
+            self.word_to_index = labels
             if not sos_eos:
                 self.word_to_index.pop("<sos>", 'No Key found')
                 self.word_to_index.pop("<eos>", 'No Key found')

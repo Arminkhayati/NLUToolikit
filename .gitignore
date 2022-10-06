@@ -1,4 +1,6 @@
 __pycache__
 __pycache__/
 *.pyc
-
+output/data_dump/*
+output/logs/*
+output/model/*

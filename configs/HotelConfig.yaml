@@ -1,23 +1,126 @@
 
-name: "RNN"
+name: "TransformerEncoder"
 
 
 task: "HotelReservationTask" # HotelReservationTask or BuyChargeTask
 seed: 11111
-data:
 
+
+model:
+  layer1:
+    layer: "input"
+    shape: ${model_params.max_seq_len}
+  layer2:
+    layer: "TokenAndPositionEmbedding"
+    vocabulary_size: ${model_params.vocab_size}
+    sequence_length: ${model_params.max_seq_len}
+    embedding_dim: ${model_params.embedding_dim}
+  layer3:
+    layer: "dropout"
+    rate: 0.2
+  layer4:
+    layer: "TransformerEncoder"
+    intermediate_dim: 200
+    num_heads: 2
+    dropout: 0.1
+    activation: "relu"
+    layer_norm_epsilon: 1e-05
+  layer5:
+    layer: "dense"
+    activation: "gelu"
+    dim: 150
+    time_distributed: true
+  layer6:
+    layer: "dense"
+    activation: "softmax"
+    dim: 13 # 13 if data.add_sos_eos = false else 15
+    time_distributed: true
+
+
+
+
+model_params:
+  max_seq_len: 45
+  num_words: 250
+  vocab_size: 300 # "num_words" + 50
+  batch_size: 32
+  epochs: 1 # 3
+  steps_per_epoch: 5 #5000
+  validation_steps: 3 #3000
+  embedding_dim: 300
+  # for now only Adam optimizer is supported. More optimizers will be added if needed...
+  optimizer:
+    type: "adam"
+    learning_rate: 0.001
+  # for now only categorical_crossentropy loss is supported. More optimizers will be added if needed...
+  loss: "categorical_crossentropy"
+  metrics: ["precision", "recall", "accuracy"]
+
+callbacks:
+  ModelCheckpoint:
+    filepath: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/model_weights.best.hdf5"
+    monitor: "val_loss"
+    verbose: 1
+    save_best_only: True
+    save_weights_only: True
+    mode: "min"
+    save_freq: "epoch"
+
+
+  ReduceLROnPlateau:
+    monitor: "val_loss"
+    factor: 0.8
+    patience: 2
+    verbose: 1
+    mode: "auto"
+    min_delta: 0.0001
+    cooldown: 1
+    min_lr: 0.0001
+
+  TensorBoard:
+    log_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/logs"
+    histogram_freq: 0
+    write_graph: true
+    write_images: false
+    write_steps_per_second: false
+    update_freq: "epoch"
+    profile_batch: 0
+    embeddings_freq: 0
+    embeddings_metadata: None
+
+save_model_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/full_model.h5"
+
+
+data:
   # if you are loading data from pickle files, their name must be
   # train_data.pickle, validation_data.pickle and test_data.pickle if use_test_set is True
   from: "pickle" # text or pickle
-  data_dir: "../data"
+  data_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/data"
+  save_data_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump"
   # data split ratio
   split: 0.2
   # if true, "2*split" percent of data is taken away for validation and test set and the rest is for train.
   # else, "split" percent of data is taken away for validation and the rest is for train.
   use_test_set: false
+  add_sos_eos: false # Add <sos> and <eos> at the beginning and end of sentence
+  labels: {
+    "PAD": 0,
+    "O": 1,
+    "num_room": 2,
+    "time": 3,
+    "time_unit": 4,
+    "num_bed": 5,
+    "num_person": 6,
+    "person_unit": 7,
+    "hotel_name": 8,
+    "hotel_city": 9,
+    "person_unit_post": 10,
+    "hotel_name_post": 11,
+    "hotel_city_post": 12,
+    "<sos>": 13,
+    "<eos>": 14 }
 
 
-labels: {}
 
 
 

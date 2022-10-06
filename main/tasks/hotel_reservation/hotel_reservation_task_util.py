@@ -44,8 +44,9 @@ ALL_WORDS = [
 
 
 
-######################SLOTS#######################
-
+###############################SLOTS Value Generators################################
+###################### Value generators for slot placeholders #######################
+###################### Write SLOT Value Generators for your own task #######################
 def num_room_generator():
     return str(random.randint(1, 50))
 
@@ -93,8 +94,9 @@ def hotel_city_generator():
         words = words - 1
     return name
 
-
-######################WORD FILLER#######################
+###################################### WORD FILLER ######################################
+###################### Value generators for non slot placeholders #######################
+###################### Write Word fillers for your own task #######################
 def for_filler():
     values = ["برای", "برا", "واس", "واسه", "سی", ]
     return random.choice(values)
@@ -157,6 +159,8 @@ def bed_unit_filler():
     return random.choice(values)
 
 
+###################### Main functions to generate values #######################
+###################### Copy Paste them into your task util #######################
 def get_word_or_slot_value(w):
     if w in WORD_FILLER.keys():
         return ["O"], [WORD_FILLER[w]()]
@@ -176,6 +180,12 @@ def get_all_words():
             all_words.append(w)
     all_words = list(set(all_words))
     return sorted(all_words)
+
+
+
+
+###################### Reinitial these dictionaries based #######################
+###################### on your task word fillers and slots #######################
 
 WORD_FILLER = {
     # Word Filling

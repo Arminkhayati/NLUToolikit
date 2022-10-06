@@ -55,11 +55,11 @@ class Tokenizer:
     def __check_sos_eos(self):
         self.word_to_index = WORD_TO_INDEX
         if self.sos:
-            self.word_to_index["<sos>"]= 12
+            self.word_to_index["<sos>"]= 13
         else:
             self.word_to_index.pop("<sos>", 'No Key found')
         if self.eos:
-            self.word_to_index["<eos>"]= 13
+            self.word_to_index["<eos>"]= 14
         else:
             self.word_to_index.pop("<eos>", 'No Key found')
         self.counter = {item[0]:0 for item in self.word_to_index.items()}
