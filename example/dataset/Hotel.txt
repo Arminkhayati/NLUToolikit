@@ -1,0 +1,72 @@
+{num_room} اتاق
+{time} {time_unit}
+هتل {hotel_name} {in} شهر {hotel_city}
+هتل {hotel_name} شهر {hotel_city}
+هتل {hotel_name}
+{num_bed} {bed_unit}
+شهر {hotel_city}
+{in} شهر {hotel_city}
+{in} هتل {hotel_name}
+{num_person} {person_unit}
+اتاق {for} {num_person} {person_unit} {verb}
+{num_room} اتاق {num_bed} {bed_unit} {verb}
+{num_room} اتاق {for} {num_person} {person_unit} {for_{me}} {verb}
+{num_room} اتاق {in} هتل {hotel_name} {for} {num_person} {person_unit} و {time} {time_unit} شهر {hotel_city} {verb}
+{num_room} تا اتاق {in} هتل {hotel_name} {for} {num_person} {person_unit} و {time} {time_unit} {in} شهر {hotel_city} {verb}
+{num_room} اتاق {in} هتل {hotel_name} {for} {num_person} {person_unit} و {time} {time_unit} {verb}
+{num_room} تا اتاق {in} هتل {hotel_name} {for} {num_person} {person_unit} و {time} {time_unit} {verb}
+{verb} هتل {hotel_name} {for} {time} {time_unit}
+{num_room} اتاق {num_bed} {bed_unit} {for} {time} {time_unit} {verb}
+{num_room} تا اتاق {num_bed} {bed_unit} {for} {time} {time_unit} {verb}
+{num_room} اتاق با {num_bed} {bed_unit} {for} {time} {time_unit} {verb}
+{for_{me}} هتل {hotel_name} اتاق {verb}
+{for} یه {time} {time_unit} و {time} {time_unit} {in} هتل {hotel_name} اتاق {verb}
+{for} {num_person} {person_unit} و {num_person} {person_unit} و {time} {time_unit} و {time} {time_unit} {in} هتل {hotel_name} اتاق {verb} {for_{me}}
+{for} {time} {time_unit} و {time} {time_unit} و {num_person} {person_unit} و {num_person} {person_unit} {in} هتل {hotel_name} اتاق {verb} {for_{me}}
+{for} {num_person} {person_unit} و {num_person} {person_unit} و {time} {time_unit} و {time} {time_unit} {in} هتل {hotel_name} شهر {hotel_city} اتاق {verb} {for_{me}}
+{for} {time} {time_unit} و {time} {time_unit} و {num_person} {person_unit} و {num_person} {person_unit} {in} هتل {hotel_name} {in} شهر {hotel_city} اتاق {verb} {for_{me}}
+{please} {num_room} اتاق {num_person} {person_unit} {in} هتل {hotel_name} {in} شهر {hotel_city} رو به مدت {time} {time_unit} و {time} {time_unit} {for_{me}} {verb}
+{please} {num_room} تا اتاق {num_person} {person_unit} {in} هتل {hotel_name} {in} {hotel_city} رو به مدت {time} {time_unit} و {time} {time_unit} {for_{me}} {verb}
+{num_room} اتاق {in} شهر {hotel_city} هتل {hotel_name} با {num_bed} {bed_unit} {for} {time} {time_unit} و {time} {time_unit} {for_{me}} {verb}
+{num_room} اتاق شهر {hotel_city} با {num_bed} {bed_unit} {in} هتل {hotel_name} {for} {time} {time_unit} و {time} {time_unit} {for_{me}} {verb}
+{for} مدت {time} {time_unit} شهر {hotel_city} {in} هتل {hotel_name} اتاق {num_bed} {bed_unit} {verb}
+{num_room} اتاق {for} چند روز {in} هتل {hotel_name} شهر {hotel_city} {verb}
+{num_room} تا اتاق {for} چند روز {in} هتل {hotel_name} {in} شهر {hotel_city} {verb}
+{from} هتل {hotel_name} {in} شهر {hotel_city} {for} {time} {time_unit} و {time} {time_unit} {num_room} اتاق {num_bed} {bed_unit} {verb}
+{from} هتل {hotel_name} شهر {hotel_city} {for} {time} {time_unit} و {time} {time_unit} {num_room} اتاق {num_person} {person_unit} {verb}
+{from} هتل {hotel_name} {in} شهر {hotel_city} {for} {time} {time_unit} و {time} {time_unit} {num_room} تا اتاق {num_bed} {bed_unit} {verb}
+{from} هتل {hotel_name} شهر {hotel_city} {for} {time} {time_unit} و {time} {time_unit} {num_room} تا اتاق {num_person} {person_unit} {verb}
+{in} شهر {hotel_city} {num_room} اتاق {num_bed} {bed_unit} {in} هتل {hotel_name} {for} {time} {time_unit} اتاق {verb}
+{in} شهر {hotel_city} {num_bed} {bed_unit} {in} هتل {hotel_name} {for} {time} {time_unit} اتاق {verb}
+هتل {hotel_name} {for} {time} {time_unit} {in} شهر {hotel_city} {for_{me}} اتاق {verb}
+{num_room} اتاق {in} هتل {hotel_name} شهر {hotel_city} {for} {num_person} {person_unit} به مدت {time} {time_unit} {verb} {please}
+{num_room} اتاق {in} هتل {hotel_name} شهر {hotel_city} {for} {num_person} {person_unit} به مدت {time} {time_unit} و {time} {time_unit} {verb} {please}
+{num_room} اتاق {in} هتل {hotel_name} {in} شهر {hotel_city} {for} {num_person} {person_unit} به مدت {time} {time_unit} و {time} {time_unit} {verb} {please}
+{num_room} تا اتاق {in} هتل {hotel_name} شهر {hotel_city} {for} {num_person} {person_unit} به مدت {time} {time_unit} و {time} {time_unit} {verb} {please}
+{for} {num_person} {person_unit} و {num_person} {person_unit} {in} هتل {hotel_name} {in} شهر {hotel_city} اتاق {verb}
+{in} هتل {hotel_name} شهر {hotel_city} {for} {num_person} {person_unit} و {num_person} {person_unit} {num_room} اتاق {verb}
+{for} {time} {time_unit} و {time} {time_unit} {num_room} تا اتاق {verb}
+برا {time} {time_unit} و {time} {time_unit} {num_room} اتاق {verb}
+{please} {num_room} تا اتاق {num_person} {person_unit} {in} هتل {hotel_name} {in} شهر {hotel_city} رو به time {time} {time_unit} و {time} {time_unit} {for_{me}} {verb}
+{for} یه {time} {time_unit} و{time} {time_unit} {in} هتل {hotel_name} شهر {hotel_city} اتاق {verb}
+{in} هتل {hotel_name} {in} شهر {hotel_city} {for} {num_person} {person_unit} و {num_person} {person_unit} {num_room} اتاق {verb}
+یه اتاق {num_person} {person_unit} {in} شهر {hotel_city} هتل {hotel_name} {verb}
+{in} شهر {hotel_city} هتل {hotel_name} {for_{me}} {num_person} {person_unit} {verb}
+{for} {num_person} {person_unit} شهر {hotel_city} هتل {hotel_name} {verb}
+برو {for_{me}} توی شهر {hotel_city} {for} {time} {time_unit} {num_room} اتاق {num_bed} {bed_unit} {in} هتل {hotel_name} {verb}
+برو {for_{me}} توی شهر {hotel_city} {for} {time} {time_unit} و {time} {time_unit} {num_room} اتاق {num_bed} {bed_unit} {in} هتل {hotel_name} {verb}
+برو {for_{me}} توی شهر {hotel_city} {for} {time} {time_unit} اتاق {num_bed} {bed_unit} {in} هتل {hotel_name} {verb}
+برو {for_{me}} توی شهر {hotel_city} {for} {time} {time_unit} و {time} {time_unit} اتاق {num_bed} {bed_unit} {in} هتل {hotel_name} {verb}
+برو {for_{me}} توی هتل {hotel_name} {for} {time} {time_unit} و {time} {time_unit} اتاق {num_bed} {bed_unit} {in} شهر {hotel_city} {verb}
+برو {for_{me}} توی هتل {hotel_name} {in} شهر {hotel_city} {for} {time} {time_unit} و {time} {time_unit} اتاق {num_bed} {bed_unit} {verb}
+برو {for_{me}} توی هتل {hotel_name} شهر {hotel_city} اتاق {num_bed} {bed_unit} {verb}
+{for_{me}} توی هتل {hotel_name} شهر {hotel_city} اتاق {num_bed} {bed_unit} {verb}
+{verb} {num_room} اتاق {num_bed} {bed_unit} تو هتل {hotel_name} شهر {hotel_city}
+{verb} {num_bed} {bed_unit} {num_room} اتاق تو شهر {hotel_city} هتل {hotel_name}
+{for_{me}} توی هتل {hotel_name} اتاق {verb}
+{for_{me}} توی شهر {hotel_city} اتاق {num_bed} {bed_unit} {verb}
+{for_{me}} توی شهر {hotel_city} اتاق {num_person} {person_unit} {verb}
+{for_{me}} {in} هتل {hotel_name} {in} شهر {hotel_city}
+{for_{me}} {in} هتل {hotel_name} {in} شهر {hotel_city} {for} {time} {time_unit}
+{for_{me}} {in} هتل {hotel_name} {in} شهر {hotel_city} {for} {time} {time_unit} و {time} {time_unit} اتاق {num_person} {person_unit}
+{in} هتل {hotel_name} {in} شهر {hotel_city} {for} {time} {time_unit} اتاق {num_bed} {bed_unit}
