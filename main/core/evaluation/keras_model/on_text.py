@@ -1,3 +1,5 @@
+import sys
+sys.path.append("..")
 import argparse
 from keras.models import load_model
 from keras_nlp.layers import TokenAndPositionEmbedding
@@ -10,12 +12,12 @@ def keras_model_evaluation(args):
         x_tokenizer = pickle.load(input_file)
     with open(args["y_tokenizer"], "rb") as input_file:
         y_tokenizer = pickle.load(input_file)
+    with open(args["text"], encoding="utf-8") as input_file:
+        lines = input_file.readlines()
 
-    while True:
-        sentence = input("Type :  ")
-        if sentence == "exit":
-            print("Bye Bye .")
-            break
+
+    for i, sentence in enumerate(lines):
+        print(f"Sentence {i+1}: {sentence}")
         sentence = sentence.strip().split(" ")
         sentence = [w for w in sentence if w != '']
         input_seq = x_tokenizer.words_to_seq(sentence)
@@ -30,43 +32,36 @@ def keras_model_evaluation(args):
 
 
 
+
 parser = argparse.ArgumentParser(prog="dataset_evaluator", description='Evaluating model on input text (type "exit" to quit)')
+parser.add_argument(
+    '-txt', '--text',
+    type=str,
+    default="/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/data/test.txt",
+    help='Path of text file containing your sentences.',
+)
 parser.add_argument(
     '-m', '--model',
     type=str,
-    default="/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/full_model.h5",
+    default="/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/RNNEncoder/full_model.h5",
     help='Path of model.',
 )
 parser.add_argument(
     '-xt', '--x-tokenizer',
     type=str,
-    default='/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/x_tokenizer.pickle',
+    default='/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/RNNEncoder/x_tokenizer.pickle',
     help='Path of X_Tokenizer pickle file.',
 )
 parser.add_argument(
     '-yt', '--y-tokenizer',
     type=str,
-    default='/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/y_tokenizer.pickle',
+    default='/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/RNNEncoder/y_tokenizer.pickle',
     help='Path of Y_Tokenizer pickle file.',
 )
 
-parser.add_argument(
-    '-bknd', '--backend',
-    type=str,
-    default="keras",
-    help='Your model backend. (keras or pytorch) ...',
-)
 
 args = parser.parse_args().__dict__
-# print(args)
-if args["backend"] == "keras":
-    keras_model_evaluation(args)
-elif args["backend"] == "pytorch":
-    pass
-else:
-    raise RuntimeError("Uknown backend : {0}".format(args["backend"]))
-
-
+keras_model_evaluation(args)
 
 
 

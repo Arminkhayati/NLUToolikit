@@ -54,8 +54,8 @@ model_params:
   vocab_size: 300 # "num_words" + 50
   batch_size: 32
   epochs: 1 # 3
-  steps_per_epoch: 50 #5000
-  validation_steps: 30 #3000
+  steps_per_epoch: 5000
+  validation_steps: 3000
   embedding_dim: 300
   # for now only Adam optimizer is supported. More optimizers will be added if needed...
   optimizer:
@@ -68,7 +68,7 @@ model_params:
 
 callbacks:
   ModelCheckpoint:
-    filepath: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/model_weights.best.hdf5"
+    filepath: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/${name}/model_weights.best.hdf5
     monitor: "val_loss"
     verbose: 1
     save_best_only: True
@@ -88,7 +88,7 @@ callbacks:
     min_lr: 0.0001
 
   TensorBoard:
-    log_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/logs"
+    log_dir: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/logs/${name}
     histogram_freq: 0
     write_graph: true
     write_images: false
@@ -98,7 +98,7 @@ callbacks:
     embeddings_freq: 0
     embeddings_metadata: None
 
-save_model_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/full_model.h5"
+save_model_dir: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/${name}
 
 
 
@@ -107,7 +107,7 @@ data:
   # train_data.pickle, validation_data.pickle and test_data.pickle if use_test_set is True
   from: "pickle" # text or pickle
   data_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/data"
-  save_data_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump"
+  save_data_dir: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/${name}
   # data split ratio
   split: 0.2
   # if true, "2*split" percent of data is taken away for validation and test set and the rest is for train.

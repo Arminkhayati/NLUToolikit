@@ -1,6 +1,5 @@
-from main.core.evaluation.single_sentence_prediction import get_predictor
+from main.core.evaluation.keras_model.single_sentence_prediction import get_predictor
 from requests_toolbelt.multipart.encoder import MultipartEncoder
-from sklearn.metrics import accuracy_score
 from leven import levenshtein
 import numpy as np
 import argparse

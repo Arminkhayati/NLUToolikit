@@ -1,5 +1,6 @@
 from main.tasks.loader import task_loader
-from main.core.train.keras_model_trainer import KerasModelTrainer
+
+
 
 class TrainHandler:
     def __init__(self, config):
@@ -9,6 +10,8 @@ class TrainHandler:
 
     def train(self):
         if self.config["name"] == "ConvSeq2Seq":
-            pass
+            from main.core.train.convseq2seq_trainer import ConvSeq2SeqTrainer
+            return ConvSeq2SeqTrainer(self.config, self.task).train()
         else:
+            from main.core.train.keras_model_trainer import KerasModelTrainer
             return KerasModelTrainer(self.config, self.task).train()

@@ -24,12 +24,7 @@ def keras_model_predictor(args):
 
 
 def get_predictor(args):
-    if args["backend"] == "keras":
-        return keras_model_predictor(args)
-    elif args["backend"] == "pytorch":
-        pass
-    else:
-        raise RuntimeError("Uknown backend : {0}".format(args["backend"]))
+    return keras_model_predictor(args)
 
 
 

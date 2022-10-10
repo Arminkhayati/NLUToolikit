@@ -1,4 +1,4 @@
-from main.core.model.builder import Builder
+from main.core.model.keras_builder import KerasBuilder
 from main.util.tokenizer import Tokenizer
 from main.core.dataset.keras_data_generator import KerasDataGenerator
 from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, TensorBoard
@@ -11,15 +11,15 @@ class KerasModelTrainer:
         self.task = task
         if not os.path.exists(config["data"]["save_data_dir"]):
             os.makedirs(config["data"]["save_data_dir"])
-        # if not os.path.exists(config["save_model_dir"]):
-        #     os.makedirs(config["save_model_dir"])
+        if not os.path.exists(config["save_model_dir"]):
+            os.makedirs(config["save_model_dir"])
 
 
     def train(self):
         self.templates, self.train_templates, self.val_templates, self.test_templates = self.task.load_data()
         self.x_tokenizer = self.__create_tokenizer("x")
         self.y_tokenizer = self.__create_tokenizer("y")
-        self.model = Builder().build_from_cfg(self.config)
+        self.model = KerasBuilder().build_from_cfg(self.config)
         train_data_gen = KerasDataGenerator(self.train_templates, self.task.generator,
                                             self.x_tokenizer, self.y_tokenizer,
                                             self.config["model_params"]["batch_size"],
@@ -58,6 +58,7 @@ class KerasModelTrainer:
     def __save_data(self):
         self.model.load_weights(self.config["callbacks"]["ModelCheckpoint"]["filepath"])
         path = self.config["save_model_dir"]
+        path = os.path.join(path, "full_model.h5")
         self.model.save(path)
 
         path = os.path.join(self.config["data"]["save_data_dir"], "x_tokenizer.pickle")

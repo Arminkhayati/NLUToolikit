@@ -14,7 +14,8 @@ from keras_nlp.layers import TransformerEncoder
 import pickle
 
 
-def layer_parser(config):
+
+def keras_layer_parser(config):
     layer = config["layer"]
     if layer == "input":
         return input_parser(config)
