@@ -8,30 +8,30 @@ seed: 11111
 
 model:
   layer1:
-    layer: "input" # layer name
-    shape: ${model_params.max_seq_len} # layer param
+    layer: "input"
+    shape: ${model_params.max_seq_len}
   layer2:
-    layer: "TokenAndPositionEmbedding" # layer name
-    vocabulary_size: ${model_params.vocab_size} # layer param
-    sequence_length: ${model_params.max_seq_len} # layer param
-    embedding_dim: ${model_params.embedding_dim} # layer param
+    layer: "TokenAndPositionEmbedding"
+    vocabulary_size: ${model_params.vocab_size}
+    sequence_length: ${model_params.max_seq_len}
+    embedding_dim: ${model_params.embedding_dim}
   layer3:
-    layer: "dropout" # layer name
-    rate: 0.2 # layer param
+    layer: "dropout"
+    rate: 0.2
   layer4:
-    layer: "TransformerEncoder" # layer name
+    layer: "TransformerEncoder"
     intermediate_dim: 200
     num_heads: 2
     dropout: 0.1
     activation: "relu"
     layer_norm_epsilon: 1e-05
   layer5:
-    layer: "dense" # layer name
+    layer: "dense"
     activation: "gelu"
     dim: 150
     time_distributed: true
   layer6:
-    layer: "dense" # layer name
+    layer: "dense"
     activation: "softmax"
     dim: 13 # 13 if data.add_sos_eos = false else 15
     time_distributed: true
@@ -95,7 +95,6 @@ data:
   # if you are loading data from pickle files, their name must be
   # train_data.pickle, validation_data.pickle and test_data.pickle if use_test_set is True
   from: "pickle" # text or pickle
-  # Directory where your templates.txt or train_task.pickle, validation_task.pickle, test_task.pickle are there.
   data_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/data"
   save_data_dir: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/${name}
   # data split ratio
