@@ -55,4 +55,5 @@ Currently only three type of models are available:
 - data.labels: all labels we are predicitng. 
   Note: `PAD` label and `O` "not slot" label must be 0 and 1 respectively, and `<sos>` and `<eos>` labels are also must be in the list, even if we are not using them.
 
+see one of sample config files for more comments.
 
