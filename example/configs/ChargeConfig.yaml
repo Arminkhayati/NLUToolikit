@@ -8,43 +8,43 @@ seed: 11111
 
 model:
   layer1:
-    layer: "input"
-    shape: ${model_params.max_seq_len}
+    layer: "input" # layer name
+    shape: ${model_params.max_seq_len} # layer param
   layer2:
-    layer: "TokenAndPositionEmbedding"
-    vocabulary_size: ${model_params.vocab_size}
-    sequence_length: ${model_params.max_seq_len}
-    embedding_dim: ${model_params.embedding_dim}
+    layer: "TokenAndPositionEmbedding" # layer name
+    vocabulary_size: ${model_params.vocab_size} # layer param
+    sequence_length: ${model_params.max_seq_len} # layer param
+    embedding_dim: ${model_params.embedding_dim} # layer param
   layer3:
-    layer: "dropout"
-    rate: 0.2
+    layer: "dropout" # layer name
+    rate: 0.2 # layer param
   layer4:
-    layer: "rnn"
-    type: "GRU" # GRU or LSTM
-    bidirectional: true
-    num_units: 150
-    activation: "elu"
-    return_sequences: true
-    use_bias: true
-    kernel_regularizer:
+    layer: "rnn" # layer name
+    type: "GRU" # RNN Type: GRU or LSTM
+    bidirectional: true # layer param
+    num_units: 150 # layer param
+    activation: "elu" # layer param
+    return_sequences: true # layer param
+    use_bias: true # layer param
+    kernel_regularizer: # layer param
       type: "L2"
       value: 1e-4
-    recurrent_regularizer:
+    recurrent_regularizer: # layer param
       type: "L2"
       value: 1e-4
-    bias_regularizer:
+    bias_regularizer: # layer param
       type: "L2"
       value: 1e-4
-    activity_regularizer:
+    activity_regularizer: # layer param
       type: "L2"
       value: 1e-5
-    dropout: 0.1
-    recurrent_dropout: 0.1
+    dropout: 0.1 # layer param
+    recurrent_dropout: 0.1 # layer param
   layer5:
-    layer: "dense"
-    activation: "softmax"
+    layer: "dense" # layer name
+    activation: "softmax" # layer param
     dim: 12 # 12 if data.add_sos_eos = false else 14
-    time_distributed: true
+    time_distributed: true # layer param
 
 
 
@@ -106,6 +106,7 @@ data:
   # if you are loading data from pickle files, their name must be
   # train_data.pickle, validation_data.pickle and test_data.pickle if use_test_set is True
   from: "pickle" # text or pickle
+  # Directory where your templates.txt or train_task.pickle, validation_task.pickle, test_task.pickle are there.
   data_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/data"
   save_data_dir: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/${name}
   # data split ratio
@@ -116,7 +117,7 @@ data:
   add_sos_eos: false # Add <sos> and <eos> at the beginning and end of sentence
   labels: {
     "PAD": 0,
-    "O": 1,
+    "O": 1, #OOV
     "charge_type": 2,
     "bnumber": 3,
     "pnumber": 4,
