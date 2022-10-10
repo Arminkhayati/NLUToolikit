@@ -1,5 +1,5 @@
 
-name: "TransformerEncoder"
+name: "TransformerEncoder" # Model name
 
 
 task: "HotelReservationTask" # HotelReservationTask or BuyChargeTask
@@ -8,33 +8,33 @@ seed: 11111
 
 model:
   layer1:
-    layer: "input"
-    shape: ${model_params.max_seq_len}
+    layer: "input" # layer name
+    shape: ${model_params.max_seq_len} # layer param
   layer2:
-    layer: "TokenAndPositionEmbedding"
-    vocabulary_size: ${model_params.vocab_size}
-    sequence_length: ${model_params.max_seq_len}
-    embedding_dim: ${model_params.embedding_dim}
+    layer: "TokenAndPositionEmbedding" # layer name
+    vocabulary_size: ${model_params.vocab_size} # layer param
+    sequence_length: ${model_params.max_seq_len} # layer param
+    embedding_dim: ${model_params.embedding_dim} # layer param
   layer3:
-    layer: "dropout"
-    rate: 0.2
+    layer: "dropout" # layer name
+    rate: 0.2 # layer param
   layer4:
-    layer: "TransformerEncoder"
-    intermediate_dim: 200
-    num_heads: 2
-    dropout: 0.1
-    activation: "relu"
-    layer_norm_epsilon: 1e-05
+    layer: "TransformerEncoder" # layer name
+    intermediate_dim: 200 # layer param
+    num_heads: 2 # layer param
+    dropout: 0.1 # layer param
+    activation: "relu" # layer param
+    layer_norm_epsilon: 1e-05 # layer param
   layer5:
-    layer: "dense"
-    activation: "gelu"
-    dim: 150
-    time_distributed: true
+    layer: "dense" # layer name
+    activation: "gelu" # layer param
+    dim: 150 # layer param
+    time_distributed: true # layer param
   layer6:
-    layer: "dense"
-    activation: "softmax"
-    dim: 13 # 13 if data.add_sos_eos = false else 15
-    time_distributed: true
+    layer: "dense" # layer name
+    activation: "softmax" # layer param
+    dim: 13  # layer param, 13 if data.add_sos_eos = false else 15
+    time_distributed: true # layer param
 
 
 
@@ -44,7 +44,7 @@ model_params:
   num_words: 250
   vocab_size: 300 # "num_words" + 50
   batch_size: 32
-  epochs: 1 # 3
+  epochs: 3
   steps_per_epoch: 5000
   validation_steps: 3000
   embedding_dim: 300
@@ -95,6 +95,7 @@ data:
   # if you are loading data from pickle files, their name must be
   # train_data.pickle, validation_data.pickle and test_data.pickle if use_test_set is True
   from: "pickle" # text or pickle
+  # Path of directory where templates.txt or train_task.pickle, validation_task.pickle, and test_task.pickle files are there.
   data_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/data"
   save_data_dir: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/${name}
   # data split ratio

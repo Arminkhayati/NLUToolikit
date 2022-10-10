@@ -21,7 +21,7 @@ class HotelReservationTask(Task):
         elif self.config["data"]["from"] == "pickle":
             return self._handle_pickle()
         else:
-            raise RuntimeError("{0} Is Not A Valid Data File ...".format(config["from"]))
+            raise RuntimeError("{0} Is Not A Valid Data File ...".format(self.config["from"]))
 
     def _handle_text(self) -> tuple:
         """Add path of text file in config file"""

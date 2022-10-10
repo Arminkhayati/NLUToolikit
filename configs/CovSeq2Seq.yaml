@@ -1,5 +1,5 @@
 
-name: "ConvSeq2Seq"
+name: "ConvSeq2Seq" # Model name
 task: "BuyChargeTask" # HotelReservationTask or BuyChargeTask
 seed: 11111
 
@@ -9,7 +9,7 @@ model_params:
   num_words: 250
   vocab_size: 300 # "num_words" + 50
   batch_size: 32
-  epochs: 30 # 3
+  epochs: 30
   steps_per_epoch: 5000
   validation_steps: 3000
   embedding_dim: 300
@@ -37,6 +37,7 @@ data:
   # if you are loading data from pickle files, their name must be
   # train_data.pickle, validation_data.pickle and test_data.pickle if use_test_set is True
   from: "pickle" # text or pickle
+    # Path of directory where templates.txt or train_task.pickle, validation_task.pickle, and test_task.pickle files are there.
   data_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/data"
   save_data_dir: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/${name}
   # data split ratio
