@@ -53,4 +53,6 @@ Currently only three type of models are available:
 - model: your model architecture stays here.
 - model_params: your model training parameters stays here.
 - data.labels: all labels we are predicitng. 
-  Note: Pad label and OOV label must be 0 and 1 respectively, and <sos> and <eos> labels are also must be in the list, even if we are not using them.+
+  Note: `PAD` label and `O` "not slot" label must be 0 and 1 respectively, and `<sos>` and `<eos>` labels are also must be in the list, even if we are not using them.
+
+
