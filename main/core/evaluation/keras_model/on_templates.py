@@ -31,7 +31,8 @@ def keras_model_evaluation(args):
     data_gen = KerasDataGenerator(templates, generator,
                                   x_tokenizer, y_tokenizer,
                                   args["batch_size"],
-                                  args["steps_per_epoch"])
+                                  args["steps_per_epoch"],
+                                  aug_percent=args["augmentation"])
     data_gen.train = False
     model_score = model.evaluate(data_gen, batch_size=args["batch_size"])
 
@@ -89,7 +90,12 @@ parser.add_argument(
     help='Number of steps in evaluation.',
 )
 
-
+parser.add_argument(
+    '-aug', '--augmentation',
+    type=int,
+    default=3000,
+    help='Augmentation ratio on data.',
+)
 
 
 

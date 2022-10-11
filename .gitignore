@@ -4,3 +4,4 @@ __pycache__/
 output/data_dump/*
 output/logs/*
 output/model/*
+test.py

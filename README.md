@@ -32,7 +32,8 @@ Use command `chmod 750 YourFile.sh` to set required permissions, then execute it
 
 ## Adding Tasks
 To add your task, 
-- Create a package for it in main/tasks/ package.
+- Put your dataset templates files in ./data dir. 
+- Create a package for it in ./main/tasks/ package.
 - Create a YourTask class and inherit Task class. Implement required methods to load templates.
 - Implement your task util in the same format as BuyCharge and HotelReservation tasks.
   - **SLOT**: is a dictionary that maps slots in templates to the generator functions for them.

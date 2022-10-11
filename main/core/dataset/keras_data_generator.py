@@ -31,16 +31,21 @@ class KerasDataGenerator(Sequence):
     def __len__(self):
         return self.steps_per_epoch
 
-    # def __augment(self, template):
-    #     if random.random() < self.aug_percent:
-    #         random.shuffle(template)
-    #     return template
+    def __augment(self, template):
+        template = " ".join(template)
+        template = template.split("#_#")
+        if random.random() < self.aug_percent:
+            random.shuffle(template)
+        template = [w.strip() for w in template]
+        template = " ".join(template)
+        template = template.split(" ")
+        return template
 
     def __getitem__(self, index):
         templates = random.choices(self.templates, k=self.batch_size)
         X, y = [], []
         for t in templates:
-            # t = self.__augment(t)
+            t = self.__augment(t)
             sentence, slots = self.__generate_sentence_for(t)
             X.append(sentence)
             y.append(slots)

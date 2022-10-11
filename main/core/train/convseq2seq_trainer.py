@@ -41,13 +41,15 @@ class ConvSeq2SeqTrainer:
                                            self.x_tokenizer, self.y_tokenizer,
                                            self.config["model_params"]["batch_size"],
                                            self.config["model_params"]["steps_per_epoch"],
-                                           True, self.device, collate_fn
+                                           True, self.device, collate_fn,
+                                           aug_percent=self.config["data"]["augmentation"]
                                            )
         valid_dataloader = TorchDataLoader(self.val_templates, self.task.generator,
                                            self.x_tokenizer, self.y_tokenizer,
                                            self.config["model_params"]["batch_size"],
                                            self.config["model_params"]["steps_per_epoch"],
-                                           True, self.device, collate_fn
+                                           True, self.device, collate_fn,
+                                           aug_percent=self.config["data"]["augmentation"]
                                            )
         self.model, criterion, optimizer = ConvSeq2SeqBuilder().build_from_cfg(self.config, self.device)
 

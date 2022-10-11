@@ -23,12 +23,14 @@ class KerasModelTrainer:
         train_data_gen = KerasDataGenerator(self.train_templates, self.task.generator,
                                             self.x_tokenizer, self.y_tokenizer,
                                             self.config["model_params"]["batch_size"],
-                                            self.config["model_params"]["steps_per_epoch"])
+                                            self.config["model_params"]["steps_per_epoch"],
+                                            aug_percent=self.config["data"]["augmentation"])
 
         val_data_gen = KerasDataGenerator(self.val_templates, self.task.generator,
                                           self.x_tokenizer, self.y_tokenizer,
                                           self.config["model_params"]["batch_size"],
-                                          self.config["model_params"]["validation_steps"])
+                                          self.config["model_params"]["validation_steps"],
+                                          aug_percent=self.config["data"]["augmentation"])
         checkpoint = ModelCheckpoint(**self.config["callbacks"]["ModelCheckpoint"])
         reduceLROnPlat = ReduceLROnPlateau(**self.config["callbacks"]["ReduceLROnPlateau"])
         tsboard = TensorBoard(**self.config["callbacks"]["TensorBoard"])

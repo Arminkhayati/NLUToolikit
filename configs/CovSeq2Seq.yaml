@@ -46,6 +46,7 @@ data:
   # else, "split" percent of data is taken away for validation and the rest is for train.
   use_test_set: false
   add_sos_eos: true # Add <sos> and <eos> at the beginning and end of sentence
+  augmentation: 0.5 # Augemntation Percent,  set 0 for no augmentation
   labels: {
     "PAD": 0,
     "O": 1,

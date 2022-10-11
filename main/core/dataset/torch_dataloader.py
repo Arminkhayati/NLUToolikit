@@ -45,15 +45,20 @@ class TorchDataset(Dataset):
     def __len__(self):
         return self.steps_per_epoch
 
-    # def __augment(self, template):
-    #     if random.random() < self.aug_percent:
-    #         random.shuffle(template)
-    #     return template
+    def __augment(self, template):
+        template = " ".join(template)
+        template = template.split("#_#")
+        if random.random() < self.aug_percent:
+            random.shuffle(template)
+        template = [w.strip() for w in template]
+        template = " ".join(template)
+        template = template.split(" ")
+        return template
 
     def __getitem__(self, idx):
         # self.test.append(idx)
         template = random.choice(self.templates)
-        # template = self.__augment(template)
+        template = self.__augment(template)
         sentence, slots = self.__generate_sentence_for(template)
         sentence = torch.tensor(sentence).to(self.device)
         slots = torch.tensor(slots).to(self.device)

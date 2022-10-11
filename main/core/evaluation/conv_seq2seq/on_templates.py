@@ -38,7 +38,8 @@ def conv_s2s_model_evaluation(args):
                                  x_tokenizer, y_tokenizer,
                                  args["batch_size"],
                                  args["steps_per_epoch"],
-                                 True, device, collate_fn)
+                                 True, device, collate_fn,
+                                 aug_percent=args["augmentation"])
     criterion = conv_seq2seq_criterion_parser("CrossEntropyLoss")
 
     model.eval()
@@ -103,6 +104,12 @@ parser.add_argument(
 )
 
 
+parser.add_argument(
+    '-aug', '--augmentation',
+    type=int,
+    default=3000,
+    help='Augmentation ratio on data.',
+)
 
 
 
