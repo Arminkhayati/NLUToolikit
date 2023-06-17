@@ -21,6 +21,8 @@ def keras_layer_parser(config):
         return input_parser(config)
     elif layer == "TokenAndPositionEmbedding":
         return token_and_positional_embedding_parser(config)
+    elif layer == "Embedding":
+        return embedding_parser(config)
     elif layer == "dropout":
         return dropout_parser(config)
     elif layer == "rnn":
@@ -35,6 +37,8 @@ def keras_layer_parser(config):
             return dense_parser(config)
     elif layer == "TransformerEncoder":
         return transformer_encoder_parser(config)
+    elif layer == "LayerNormalization":
+        return layer_normalization_parser(config)
     else:
         raise RuntimeError("{0} layer is not available ...".format(layer))
 
@@ -47,6 +51,12 @@ def token_and_positional_embedding_parser(config):
         vocabulary_size=config["vocabulary_size"],
         sequence_length=config["sequence_length"],
         embedding_dim=config["embedding_dim"]
+    )
+def embedding_parser(config):
+    return Embedding(
+        input_dim=config["vocabulary_size"],
+        input_length=config["sequence_length"],
+        output_dim=config["embedding_dim"]
     )
 
 def dropout_parser(config):
@@ -109,6 +119,10 @@ def transformer_encoder_parser(config):
         activation=config["activation"],
         layer_norm_epsilon=config["layer_norm_epsilon"]
     )
+
+def layer_normalization_parser(config):
+    return LayerNormalization()
+
 
 def metric_parser(metrics):
     metrics_object = []

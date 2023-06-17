@@ -1,4 +1,4 @@
-from main.tasks.buy_charge.buy_chrage_task_util import get_word_or_slot_value, ALL_WORDS
+from main.tasks.buy_charge.buy_chrage_task_util import get_word_or_slot_value, get_all_words
 from main.tasks.sentence_generator import SentenceGenerator
 from main.tasks.util import load_templates_from_pickle_file
 from main.tasks.util import load_templates_from_text_file
@@ -11,7 +11,7 @@ class BuyChargeTask(Task):
         # Create a SentenceGenerator instance with your task util get_word_or_slot_value function
         # Don't forget to import your task util get_word_or_slot_value function above.
         self.generator = SentenceGenerator(get_word_or_slot_value)
-        self.words = ALL_WORDS
+        self.words = get_all_words()
         self.labels = config["data"]["labels"]
         self.config = config
 
@@ -34,6 +34,7 @@ class BuyChargeTask(Task):
 
     def _handle_pickle(self) -> tuple:
         """Add paths of train, validation and test pickle files in config file"""
+
         self.config["data"]["train_data"] = \
             os.path.join(self.config["data"]["data_dir"], "train_charge.pickle")
         self.config["data"]["validation_data"] = \

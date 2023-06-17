@@ -4,6 +4,7 @@ from main.core.dataset.keras_data_generator import KerasDataGenerator
 from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, TensorBoard
 import pickle
 import os
+from pathlib import Path
 
 class KerasModelTrainer:
     def __init__(self, config, task):
@@ -31,6 +32,8 @@ class KerasModelTrainer:
                                           self.config["model_params"]["batch_size"],
                                           self.config["model_params"]["validation_steps"],
                                           aug_percent=self.config["data"]["augmentation"])
+        head, _ = os.path.split(self.config["callbacks"]["ModelCheckpoint"]["filepath"])
+        Path(head).mkdir(parents=True, exist_ok=True)
         checkpoint = ModelCheckpoint(**self.config["callbacks"]["ModelCheckpoint"])
         reduceLROnPlat = ReduceLROnPlateau(**self.config["callbacks"]["ReduceLROnPlateau"])
         tsboard = TensorBoard(**self.config["callbacks"]["TensorBoard"])
@@ -60,9 +63,11 @@ class KerasModelTrainer:
     def __save_data(self):
         self.model.load_weights(self.config["callbacks"]["ModelCheckpoint"]["filepath"])
         path = self.config["save_model_dir"]
+        Path(path).mkdir(parents=True, exist_ok=True)
         path = os.path.join(path, "full_model.h5")
         self.model.save(path)
 
+        Path(self.config["data"]["save_data_dir"]).mkdir(parents=True, exist_ok=True)
         path = os.path.join(self.config["data"]["save_data_dir"], "x_tokenizer.pickle")
         with open(path, "wb") as f:
             self.x_tokenizer.set_train(False)

@@ -157,4 +157,4 @@ dependencies:
     - antlr4-python3-runtime==4.9.3
     - omegaconf==2.2.3
     - pyyaml==6.0
-prefix: /media/SSD1TB/khayati/anaconda3/envs/torch4
+prefix: ~/khayati/anaconda3/envs/torch4

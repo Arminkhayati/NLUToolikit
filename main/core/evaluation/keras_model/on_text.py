@@ -37,25 +37,25 @@ parser = argparse.ArgumentParser(prog="dataset_evaluator", description='Evaluati
 parser.add_argument(
     '-txt', '--text',
     type=str,
-    default="/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/data/test.txt",
+    default="./data/test.txt",
     help='Path of text file containing your sentences.',
 )
 parser.add_argument(
     '-m', '--model',
     type=str,
-    default="/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/RNNEncoder/full_model.h5",
+    default="./output/model/RNNEncoder/full_model.h5",
     help='Path of model.',
 )
 parser.add_argument(
     '-xt', '--x-tokenizer',
     type=str,
-    default='/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/RNNEncoder/x_tokenizer.pickle',
+    default='./output/data_dump/RNNEncoder/x_tokenizer.pickle',
     help='Path of X_Tokenizer pickle file.',
 )
 parser.add_argument(
     '-yt', '--y-tokenizer',
     type=str,
-    default='/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/RNNEncoder/y_tokenizer.pickle',
+    default='./output/data_dump/RNNEncoder/y_tokenizer.pickle',
     help='Path of Y_Tokenizer pickle file.',
 )
 

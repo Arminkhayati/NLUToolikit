@@ -23,7 +23,11 @@ def load_templates_from_text_file(config):
         val_templates = templates[num_train_samples: num_train_samples + num_val_samples]
         test_templates = []
 
-
+    print("*********************")
+    print(train_templates)
+    print("*********************")
+    print(val_templates)
+    print("*********************")
     logging.log(logging.INFO, f" {len(templates)} templates loaded")
     logging.log(logging.INFO, f" {len(train_templates)} templates selected for training")
     logging.log(logging.INFO, f" {len(val_templates)} templates selected for validation")

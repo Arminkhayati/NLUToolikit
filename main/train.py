@@ -9,7 +9,7 @@ def pars_args():
     parser.add_argument(
         '-c', '--config',
         type=str,
-        default='/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/configs/ChargeConfig.yaml',
+        default='./configs/ChargeConfig.yaml',
         help='Path of Config.yaml file.',
     )
 
@@ -17,8 +17,6 @@ def pars_args():
     return args
 
 if __name__ == "__main__" and __package__ is None:
-    # yaml_path = "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/configs/CovSeq2Seq.yaml"
-    # yaml_path = "../configs/HotelConfig.yaml"
     args = pars_args()
     config = OmegaConf.load(args["config"])
     trainer = TrainHandler(config)

@@ -68,7 +68,7 @@ model_params:
 
 callbacks:
   ModelCheckpoint:
-    filepath: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/${name}/model_weights.best.hdf5
+    filepath: ./output/model/${name}/model_weights.best.hdf5
     monitor: "val_loss"
     verbose: 1
     save_best_only: True
@@ -88,7 +88,7 @@ callbacks:
     min_lr: 0.0001
 
   TensorBoard:
-    log_dir: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/logs/${name}
+    log_dir: ./output/logs/${name}
     histogram_freq: 0
     write_graph: true
     write_images: false
@@ -98,7 +98,7 @@ callbacks:
     embeddings_freq: 0
     embeddings_metadata: None
 
-save_model_dir: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/${name}
+save_model_dir: ./output/model/${name}
 
 
 
@@ -107,8 +107,8 @@ data:
   # train_data.pickle, validation_data.pickle and test_data.pickle if use_test_set is True
   from: "pickle" # text or pickle
     # Path of directory where templates.txt or train_task.pickle, validation_task.pickle, and test_task.pickle files are there.
-  data_dir: "/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/data"
-  save_data_dir: /media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/${name}
+  data_dir: "./data"
+  save_data_dir: ./output/data_dump/${name}
   # data split ratio
   split: 0.2
   # if true, "2*split" percent of data is taken away for validation and test set and the rest is for train.

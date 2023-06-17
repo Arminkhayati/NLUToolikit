@@ -148,4 +148,4 @@ dependencies:
     - werkzeug==2.2.2
     - widgetsnbextension==4.0.3
     - wrapt==1.14.1
-prefix: /media/SSD1TB/khayati/anaconda3/envs/tensorflow
+prefix: ~/khayati/anaconda3/envs/tensorflow

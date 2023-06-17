@@ -1,0 +1,117 @@
+name: "TransformerEncoder" # Model name
+task: "AccountBalanceTask" # HotelReservationTask or BuyChargeTask
+seed: 11112
+
+
+model:
+  layer1:
+    layer: "input" # layer name
+    shape: ${model_params.max_seq_len} # layer param
+  layer2:
+    layer: "TokenAndPositionEmbedding" # layer name
+    vocabulary_size: ${model_params.vocab_size} # layer param
+    sequence_length: ${model_params.max_seq_len} # layer param
+    embedding_dim: ${model_params.embedding_dim} # layer param
+  layer3:
+    layer: "LayerNormalization" # layer name
+  layer4:
+    layer: "dropout" # layer name
+    rate: 0.2 # layer param
+  layer5:
+    layer: "TransformerEncoder" # layer name
+    intermediate_dim: 200 # layer param
+    num_heads: 2 # layer param
+    dropout: 0.1 # layer param
+    activation: "relu" # layer param
+    layer_norm_epsilon: 1e-05 # layer param
+  layer6:
+    layer: "LayerNormalization" # layer name
+  layer7:
+    layer: "dropout" # layer name
+    rate: 0.3 # layer param
+  layer8:
+    layer: "dense" # layer name
+    activation: "softmax" # layer param
+    dim: 8  # layer param, 8 if data.add_sos_eos = false else 10
+    time_distributed: true # layer param
+
+model_params:
+  max_seq_len: 45
+  num_words: 150
+  vocab_size: 200 # "num_words" + 50
+  batch_size: 32
+  epochs: 5
+  steps_per_epoch: 100
+  validation_steps: 50
+  embedding_dim: 100
+  # for now only Adam optimizer is supported. More optimizers will be added if needed...
+  optimizer:
+    type: "adam"
+    learning_rate: 0.001
+  # for now only categorical_crossentropy loss is supported. More optimizers will be added if needed...
+  loss: "categorical_crossentropy"
+  metrics: ["precision", "recall", "accuracy"]
+
+
+callbacks:
+  ModelCheckpoint:
+    filepath: ./output/model/${name}/${task}/balance_model_weights.best.hdf5
+    monitor: "val_loss"
+    verbose: 1
+    save_best_only: True
+    save_weights_only: True
+    mode: "min"
+    save_freq: "epoch"
+
+
+  ReduceLROnPlateau:
+    monitor: "val_loss"
+    factor: 0.8
+    patience: 1
+    verbose: 1
+    mode: "auto"
+    min_delta: 0.00001
+    cooldown: 1
+    min_lr: 0.0001
+
+  TensorBoard:
+    log_dir: ./output/logs/${name}/${task}
+    histogram_freq: 0
+    write_graph: true
+    write_images: false
+    write_steps_per_second: false
+    update_freq: "epoch"
+    profile_batch: 0
+    embeddings_freq: 0
+    embeddings_metadata: None
+
+
+save_model_dir: ./output/model/${name}/${task}
+
+
+
+data:
+  # if you are loading data from pickle files, their name must be
+  # train_data.pickle, validation_data.pickle and test_data.pickle if use_test_set is True
+  from: "text" # text or pickle
+    # Path of directory where templates.txt or train_task.pickle, validation_task.pickle, and test_task.pickle files are there.
+  data_dir: "./data"
+  save_data_dir: ./output/data_dump/${name}/${task}
+  # data split ratio
+  split: 0.2
+  # if true, "2*split" percent of data is taken away for validation and test set and the rest is for train.
+  # else, "split" percent of data is taken away for validation and the rest is for train.
+  use_test_set: false
+  add_sos_eos: false # Add <sos> and <eos> at the beginning and end of sentence
+  augmentation: 0.2 # Augemntation Percent,  set 0 for no augmentation
+  labels: {
+    "PAD": 0,
+    "O": 1,
+    "account": 2,
+    "atype": 3,
+    "verb": 4,
+    "account_post": 5,
+    "atype_post": 6,
+    "verb_post": 7,
+    "<sos>": 8,
+    "<eos>": 9}

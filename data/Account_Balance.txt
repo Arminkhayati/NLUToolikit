@@ -1,0 +1,25 @@
+سلام {please} {for_{me}} #_# یک {balance} {atype} {from} {account} #_# {verb}
+{balance} {atype} {account} {me} رو #_# {verb}
+{for_{me}} #_# {balance} {atype} {account} #_# {verb}
+{please} #_# {from} {atype} {account} {balance} #_# {verb}
+{please} #_# {balance} {atype} {account} {me} رو #_# {verb}
+{balance} حسابم رو #_# {verb}
+{balance} کارتم رو #_# {verb}
+{balance} {atype} {me} رو #_# {verb}
+{for_{me}} #_# {balance} {atype} #_# {verb}
+یه {balance} #_# {from} {atype} {account} #_# {verb}
+یه {balance} #_# {from} {atype} {bank} #_# {from} شماره {account} #_# {verb}
+{from} {atype} {bank} #_# {from} شماره {account} #_# {balance} #_# {verb}
+{from} {atype} #_# به شماره {account} #_# {balance} #_# {verb}
+{from} {atype} {account} #_# {balance} #_# {verb}
+{balance} #_# {atype} {account} #_# {verb}
+{in} {atype} {account} #_# چقدر {balance} #_# {verb}
+{please} #_# به {me} بگو #_# {balance} {atype} #_# {verb}
+{please} #_# بگو چقدر ته {atype} #_# {verb}
+{please} #_# به {me} بگو #_# {balance} {atype} {account} {verb}
+{please} #_# بگو چقدر ته {atype} {account} #_# {verb}
+کل پول ته {atype} {account} چقدر {verb}
+ته {atype} {account} رو #_# {for_{me}} {verb}
+یه نگاه بنداز #_# {verb} {balance} #_# {atype} {account} #_# {verb}
+{please} #_# یه نگاه بنداز #_# {verb} #_# {balance} {atype} {account} {verb}
+{please} #_# {for_{me}} #_# {verb} #_# {balance} {atype} {verb}

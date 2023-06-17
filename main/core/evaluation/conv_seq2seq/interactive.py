@@ -31,19 +31,19 @@ parser = argparse.ArgumentParser(prog="dataset_evaluator", description='Evaluati
 parser.add_argument(
     '-m', '--model',
     type=str,
-    default="/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/model/ConvSeq2Seq/best_full_model.pt",
+    default="./output/model/ConvSeq2Seq/best_full_model.pt",
     help='Path of model.',
 )
 parser.add_argument(
     '-xt', '--x-tokenizer',
     type=str,
-    default='/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/ConvSeq2Seq/x_tokenizer.pickle',
+    default='./output/data_dump/ConvSeq2Seq/x_tokenizer.pickle',
     help='Path of X_Tokenizer pickle file.',
 )
 parser.add_argument(
     '-yt', '--y-tokenizer',
     type=str,
-    default='/media/SSD1TB/khayati/projects/nlu/intent_slot_filling/output/data_dump/ConvSeq2Seq/y_tokenizer.pickle',
+    default='./output/data_dump/ConvSeq2Seq/y_tokenizer.pickle',
     help='Path of Y_Tokenizer pickle file.',
 )
 
